@@ -24,7 +24,7 @@ class KategoriController extends Controller
         $data['type'] = 'Pelangi Bike';
         $data['url'] = URL::current();
 
-        $ktg = DB::table('categories')->orderBy('id', 'desc')->get();
+        $ktg = category::orderBy('id', 'desc')->get();
 
         return view('backend.master.kategori.content.kategori', compact('data', 'ktg'));
     }
@@ -80,7 +80,7 @@ class KategoriController extends Controller
      */
     public function edit($slug)
     {
-        $ktg = DB::table('categories')->where('slug', $slug)->first();
+        $ktg = category::where('slug', $slug)->first();
         $data['title'] = 'Pelangi Bike';
         $data['intro'] = 'Pelangi Bike';
         $data['type'] = 'Pelangi Bike';
