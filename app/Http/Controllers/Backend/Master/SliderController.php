@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\URL;
 use App\Models\slider;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
 {
@@ -134,13 +135,13 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
-        $prd = DB::table('sliders')->where('id', $id)->first();
-        $dest = storage_path('app/public/slider/' . $prd->image);
+        $prd = slider::where('id', $id)->first();
+        $dest = Storage::url('slider/' . $prd->image);
 
         if (File::exists($dest)) {
             File::delete($dest);
         }
-        DB::table('sliders')->where('id', $id)->delete();
+        $slg = slider::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

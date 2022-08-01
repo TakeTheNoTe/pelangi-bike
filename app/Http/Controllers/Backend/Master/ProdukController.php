@@ -10,6 +10,7 @@ use App\Models\product;
 use App\Models\category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
@@ -48,7 +49,7 @@ class ProdukController extends Controller
         $data['type'] = 'Pelangi Bike';
         $data['url'] = URL::current();
 
-        $ktg =category::orderBy('id', 'desc')->get();
+        $ktg = category::orderBy('id', 'desc')->get();
 
         return view('backend.master.produk.function.create', compact('data', 'ktg'));
     }
@@ -160,12 +161,12 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         $prd = DB::table('products')->where('id', $id)->first();
-        $dest = storage_path('app/public/produk/' . $prd->image);
+        $dest = Storage::url('produk/' . $prd->image);
 
         if (File::exists($dest)) {
             File::delete($dest);
         }
-        DB::table('products')->where('id', $id)->delete();
+        product::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }
