@@ -50,9 +50,9 @@
                             <td class="text-center">{{ $i->name }}</td>
                             <td class="text-center">{{ $i->price }}</td>
                             <td class="text-center">{{ $i->discount }}</td>
-                            <td class="text-center"><embed src="{{ asset('storage/produk/' . $i->image . '') }}"
+                            <td class="text-center"><embed src="{{ Storage::url('produk/' . $i->image . '') }}"
                                     style="max-width:100px; max-height: 50px" /></td>
-                            <td class="text-center">{{ $i->category_name }}</td>
+                            <td class="text-center">{{ $i->productCategory->name }}</td>
                             <td class="text-center">{{ $i->status }}</td>
                             @if ($i->status == 'promo')
                                 <td class="text-center"><button type="button" data-toggle="modal"

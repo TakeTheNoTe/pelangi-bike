@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\DB;
 use App\Models\product;
+use App\Models\category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
@@ -24,10 +25,12 @@ class ProdukController extends Controller
         $data['type'] = 'Pelangi Bike';
         $data['url'] = URL::current();
 
-        $prdk = DB::table('categories')
-            ->join('products', 'categories.id', '=', 'products.category_id')
-            ->select('products.*', 'categories.name as category_name')
-            ->get();
+        // $prdk = DB::table('categories')
+        //     ->join('products', 'categories.id', '=', 'products.category_id')
+        //     ->select('products.*', 'categories.name as category_name')
+        //     ->get();
+
+        $prdk = product::all();
 
 
         return view('backend.master.produk.content.produk', compact('data', 'prdk'));
@@ -45,7 +48,7 @@ class ProdukController extends Controller
         $data['type'] = 'Pelangi Bike';
         $data['url'] = URL::current();
 
-        $ktg = DB::table('categories')->orderBy('id', 'desc')->get();
+        $ktg =category::orderBy('id', 'desc')->get();
 
         return view('backend.master.produk.function.create', compact('data', 'ktg'));
     }
@@ -101,10 +104,9 @@ class ProdukController extends Controller
         $data['type'] = 'Pelangi Bike';
         $data['url'] = URL::current();
 
-        $ktg = DB::table('categories')->orderBy('id', 'desc')->get();
         $prdk = product::where('slug', $slug)->first();
 
-        return view('backend.master.produk.function.edit', compact('data', 'ktg', 'prdk'));
+        return view('backend.master.produk.function.edit', compact('data', 'prdk'));
     }
 
     /**

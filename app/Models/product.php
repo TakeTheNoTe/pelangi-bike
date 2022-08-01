@@ -20,8 +20,10 @@ class product extends Model
         'slug',
         'name',
         'price',
+        'phone',
         'category_id',
         'status',
+        'discount',
         'image',
         'description',
     ];

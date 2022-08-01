@@ -71,7 +71,7 @@
                         </div>
                         <div class="form-group">
                             <label for="image">Gambar :</label><br>
-                            <img id="prvwimg" src="{{ asset('storage/produk/' . $prdk->image) }}" alt="your image"
+                            <img id="prvwimg" src="{{ Storage::url('produk/' . $prdk->image) }}" alt="your image"
                                 class="mb-4" style="max-width:300px;" />
                             <div class="input-group col-xs-12">
                                 <input type="file" class="form-control" style="display:none;" id="image"
