@@ -52,11 +52,11 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('categories')->insert([
-            'name' => $request->name,
-            'description' => $request->description,
-            'slug' => Str::slug($request->name, '-'),
-        ]);
+        $ctg = new category();
+        $ctg->name = $request->name;
+        $ctg->description = $request->description;
+        $ctg->slug = Str::slug($request->name);
+        $ctg->save();
 
         return redirect()->route('kategori.create')->with('success', 'Data berhasil ditambahkan');
     }
@@ -97,13 +97,11 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::table('categories')
-        ->where('id',$id)
-        ->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'slug' => Str::slug($request->name, '-'),
-        ]);
+        $ctg = category::find($id);
+        $ctg->name = $request->name;
+        $ctg->description = $request->description;
+        $ctg->slug = Str::slug($request->name);
+        $ctg->update();
 
         return redirect()->route('kategori.index')->withSuccess('Data berhasil diubah!');
     }
