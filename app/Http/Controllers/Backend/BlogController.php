@@ -93,7 +93,7 @@ class BlogController extends Controller
         $data['type'] = 'Pelangi Bike';
         $data['url'] = URL::current();
 
-        $blg = DB::table('blogs')->where('slug', $slug)->first();
+        $blg = blog::where('slug', $slug)->first();
 
         return view('backend.blog.function.edit', compact('data', 'blg'));
     }
