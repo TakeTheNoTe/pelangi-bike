@@ -20,9 +20,7 @@
                             </div>
                         </div>
                         <div class="col-lg-5">
-                            <div class="banner-img">
                                 <img class="img-fluid" src="{{ Storage::url('slider/'.$item->image) }}" alt="">
-                            </div>
                         </div>
                     </div>
                     @endforeach
