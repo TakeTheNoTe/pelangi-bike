@@ -26,11 +26,6 @@ class ProdukController extends Controller
         $data['type'] = 'Pelangi Bike';
         $data['url'] = URL::current();
 
-        // $prdk = DB::table('categories')
-        //     ->join('products', 'categories.id', '=', 'products.category_id')
-        //     ->select('products.*', 'categories.name as category_name')
-        //     ->get();
-
         $prdk = product::all();
 
 
@@ -106,8 +101,9 @@ class ProdukController extends Controller
         $data['url'] = URL::current();
 
         $prdk = product::where('slug', $slug)->first();
+        $ctg = category::all();
 
-        return view('backend.master.produk.function.edit', compact('data', 'prdk'));
+        return view('backend.master.produk.function.edit', compact('data', 'prdk','ctg'));
     }
 
     /**

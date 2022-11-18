@@ -29,38 +29,44 @@
                 <div class="card-body">
                     <h4 class="card-title">Ubah Produk</h4>
                     <form class="forms-sample" action="{{ route('produk.update', $prdk->id) }}"
-                        method="post"enctype="multipart/form-data">
+                          method="post" enctype="multipart/form-data">
                         @csrf
                         @method('patch')
                         <div class="form-group">
                             <label for="name">Nama :</label>
                             <input type="text" class="form-control" id="name" name="name"
-                                value="{{ $prdk->name }}" placeholder="Nama Produk">
+                                   value="{{ $prdk->name }}" placeholder="Nama Produk">
                         </div>
                         <div class="form-group">
                             <label for="price">Harga :</label>
                             <input type="text" class="form-control" name="price" id="price"
-                                value="{{ $prdk->price }}" data-type="currency" placeholder="Harga Produk">
+                                   value="{{ $prdk->price }}" data-type="currency" placeholder="Harga Produk">
                         </div>
                         <div class="form-group">
                             <label for="phone">Nomor Handphone :</label>
                             <input type="text" class="form-control" id="phone"
-                                name="phone"value="{{ $prdk->phone }}" placeholder="Nomor Handphone">
+                                   name="phone" value="{{ $prdk->phone }}" placeholder="Nomor Handphone">
                         </div>
                         <div class="form-group">
                             <label for="category">Kategori :</label>
                             <select class="form-control" id="category" name="category">
-                                <option class="form-control" value="{{ $prdk->category_id }}" selected>
+                                <option class="form-control"
+                                        value="{{ $prdk->category_id }}" {{$prdk->category_id === true ? 'selected' : ''}}>
                                     {{ $prdk->productCategory->name }}
                                 </option>
-                                <option class="form-control" value="{{ $prdk->productCategory->id }}">
-                                    {{ $prdk->productCategory->name }}</option>
+                                @foreach($ctg as $ktg)
+                                    @if($ktg->id != $prdk->category_id)
+                                        <option class="form-control" value="{{ $ktg->id }}">
+                                            {{ $ktg->name }}</option>
+                                    @else
+                                    @endif
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="category">Status :</label>
+                            <label for="status">Status :</label>
                             <select class="form-control" id="status" name="status">
-                                <option class="form-control"value="{{ $prdk->status }}"
+                                <option class="form-control" value="{{ $prdk->status }}"
                                     {{ $prdk->status ? 'selected' : '' }}>
                                     {{ $prdk->status }}
                                 </option>
@@ -72,10 +78,10 @@
                         <div class="form-group">
                             <label for="image">Gambar :</label><br>
                             <img id="prvwimg" src="{{ Storage::url('produk/' . $prdk->image) }}" alt="your image"
-                                class="mb-4" style="max-width:300px;" />
+                                 class="mb-4" style="max-width:300px;"/>
                             <div class="input-group col-xs-12">
                                 <input type="file" class="form-control" style="display:none;" id="image"
-                                    name="image" value="{{ $prdk->image }}" placeholder="image">
+                                       name="image" value="{{ $prdk->image }}" placeholder="image">
                                 <span class="input-group-append">
                                     <button class="btn btn-primary" id="upfile" type="button">Upload</button>
                                 </span>
@@ -83,7 +89,8 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Deskripsi :</label>
-                            <textarea class="form-control" id="description" name="description" rows="4" value="{{ $prdk->description }}">{{ $prdk->description }}</textarea>
+                            <textarea class="form-control" id="description" name="description" rows="4"
+                            >{{ $prdk->description }}</textarea>
                         </div>
                         <button type="submit" class="btn btn-success mr-2">Simpan</button>
                         <a href="{{ route('produk.index') }}" class="btn btn-danger">Cancel</a>
