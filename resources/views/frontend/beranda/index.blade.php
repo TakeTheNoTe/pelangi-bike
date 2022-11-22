@@ -97,7 +97,7 @@
                 <div class="col-lg-6 text-center">
                     <div class="section-title">
                         <h1>Produk Lainnya</h1>
-                        <p>Kami menyediakan produk sepeda dengan berbagai variansi dan terpercaya. Produk yang kami
+                        <p>menyediakan produk sepeda dengan berbagai variansi dan terpercaya. Produk yang kami
                             sediakan merupakan produk sepeda dengan kualitas yang baik.</p>
                     </div>
                 </div>
