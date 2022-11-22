@@ -1,3 +1,4 @@
+---
 deployment:
 tasks:
 - export DEPLOYPATH=/home/pele2239/public_html/
