@@ -11,6 +11,7 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "renatomarinho/laravel-page-speed": "^2.1",
         "tinymce/tinymce": "^6.0"
     },
     "require-dev": {
