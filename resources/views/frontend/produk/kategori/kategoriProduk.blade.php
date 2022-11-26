@@ -29,7 +29,9 @@
                     <!-- single product -->
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
-                            <img class="img-fluid" src="{{ Storage::url('produk/'.$item->image) }}" alt="">
+                            <a href="{{ route('detail-produk.produkId',$item->slug) }}">
+                                <img class="img-fluid" src="{{ Storage::url('produk/'.$item->image) }}" alt="">
+                            </a>
                             <div class="product-details">
                                 <h6>{{$item->name}}</h6>
                                 <div class="price">

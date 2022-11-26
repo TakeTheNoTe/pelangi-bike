@@ -26,9 +26,9 @@
                     <aside class="single_sidebar_widget search_widget">
                         <form action="{{ route('search-blogs') }}" method="get">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Posts..." name="keyword"
+                                <input type="text" class="form-control" name="keyword"
                                     placeholder="Search ..." value="{{ request('keyword') }}"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search'">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="submit"><i
                                             class="lnr lnr-magnifier"></i></button>
