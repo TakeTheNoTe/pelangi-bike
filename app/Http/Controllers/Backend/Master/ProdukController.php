@@ -26,7 +26,7 @@ class ProdukController extends Controller
         $data['type'] = 'Pelangi Bike';
         $data['url'] = URL::current();
 
-        $prdk = product::all();
+        $prdk = product::all()->sortBy("name");
 
 
         return view('backend.master.produk.content.produk', compact('data', 'prdk'));

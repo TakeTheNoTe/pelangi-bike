@@ -18,7 +18,8 @@ class HomeController extends Controller
 
         $produk_slider = slider::latest()->take(5)->get();
         $produk_all = product::take(16)->latest()->get();
+        $produk_best_seller = product::where('status','best seller')->take(16)->latest()->get();
 
-        return view('frontend.beranda.index', compact('data', 'produk_all', 'produk_slider'));
+        return view('frontend.beranda.index', compact('data', 'produk_all', 'produk_slider','produk_best_seller'));
     }
 }
